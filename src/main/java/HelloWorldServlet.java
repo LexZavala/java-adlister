@@ -40,9 +40,9 @@ public class HelloWorldServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         if (name == null){
-            out.println("Hello World!");
+            out.println("<h1>Hello World!</h1>");
         } else {
-            out.println("Hello " + name + "!");
+            out.println("<h1>Hello " + name + "!</h1>");
         }
     }
 }
