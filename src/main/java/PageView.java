@@ -7,28 +7,28 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "PageView", urlPatterns = "/count")
 public class PageView extends HttpServlet {
-
+    public int counter;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Boolean needReset = req.getParameter("needReset").equalsIgnoreCase("yes");
-        Integer counter = 0;
+//        Boolean needReset = req.getParameter("needReset").equalsIgnoreCase("yes");
+
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
         try {
+            Boolean needReset = req.getParameter("needReset").equalsIgnoreCase("yes");
+
             if (needReset){
                 counter = 0;
-                out.println("<h1>Your counter was reset!");
-                out.println("<h1>Your page has been viewed: " + counter + " time(s)</h1>");
-            } else {
-                counter++;
-                out.println("<h1>Your page has been viewed: " + counter + " time(s)</h1>");
+                resp.sendRedirect("/count");
             }
-
         } catch (NullPointerException npe){
-            resp.sendRedirect("/count");
+            counter++;
+            out.println("<h1>Your page has been viewed: " + counter + " time(s)</h1>");
         }
 
 
+//        counter++;
+//        out.println("<h1>Your page has been viewed: " + counter + " time(s)</h1>");
     }
 }
