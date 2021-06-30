@@ -27,5 +27,8 @@
 <body>
     <h1><%=randNum%></h1>
     <h3 style="color: <%=textColor%>">The color you chose is <%=textColor%>!</h3>
+    <p>Query String: <%= request.getQueryString()%></p>
+    <p>Path: <%=request.getRequestURL()%></p>
+    <p>User-Agent Header: <%= request.getHeader("user-agent")%></p>
 </body>
 </html>
