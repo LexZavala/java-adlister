@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    if (request.getMethod().equalsIgnoreCase("post")){
-        Enumeration paramNames = request.getParameterNames();
-        while(paramNames.hasMoreElements()){
-            String paramName = (String)paramNames.nextElement();
-            String paramValue = request.getHeader(paramName);
-            System.out.println(paramName + ": " + paramValue);
-        }
-    }
+//    if (request.getMethod().equalsIgnoreCase("post")){
+//        Enumeration paramNames = request.getParameterNames();
+//        while(paramNames.hasMoreElements()){
+//            String paramName = (String)paramNames.nextElement();
+//            String paramValue = request.getHeader(paramName);
+//            System.out.println(paramName + ": " + paramValue);
+//        }
+//    }
 %>
 
 
@@ -28,7 +28,7 @@
 </head>
 <body class="container-fluid">
     <h1>Welcome, place your pizza order</h1>
-    <form style="margin: 1em 1.2em; width: 30%" action="pizza-order.jsp" method="post">
+    <form style="margin: 1em 1.2em; width: 30%" action="pizza-order" method="post">
         <div class="form-group">
             <label for="crust-type">Crust Type:</label>
             <select class="form-control" id="crust-type" name="crust">
@@ -60,19 +60,19 @@
             <label for="toppings">Toppings:</label>
             <ul class="list-group list-group-flush" id="toppings">
                 <li class="list-group-item">
-                    <input id="beef-meat" name="topping-beef" type="checkbox">
+                    <input id="beef-meat" name="topping-selection" type="checkbox" value="Beef">
                     <label for="beef-meat">Beef</label>
                 </li>
                 <li class="list-group-item">
-                    <input id="ham-meat" name="topping-ham" type="checkbox">
+                    <input id="ham-meat" name="topping-selection" type="checkbox" value="Ham">
                     <label for="ham-meat">Ham</label>
                 </li>
                 <li class="list-group-item">
-                    <input id="philly-meat" name="topping-philly" type="checkbox">
+                    <input id="philly-meat" name="topping-selection" type="checkbox" value="Philly">
                     <label for="philly-meat">Philly Steak</label>
                 </li>
                 <li class="list-group-item">
-                    <input id="bacon-meat" name="topping-bacon" type="checkbox">
+                    <input id="bacon-meat" name="topping-selection" type="checkbox" value="Steak">
                     <label for="bacon-meat">Bacon</label>
                 </li>
             </ul>
@@ -80,8 +80,9 @@
         <div class="form-group">
             <label for="address">Enter delivery address:</label>
             <br>
-            <input id="address" type="text" placeholder="1000 Happy St. Happyville 89201 TX" style="width: 100%">
+            <input id="address" name="address" type="text" placeholder="1000 Happy St. Happyville 89201 TX" style="width: 100%">
         </div>
+        <button type="submit" value="submit">Submit</button>
     </form>
 </body>
 </html>
