@@ -24,11 +24,11 @@
     <title>JSP Tags</title>
 </head>
 <body>
-    <%@include file="partials/navbar.jsp"%>
+    <%@include file="../partials/navbar.jsp"%>
     <h1>Hello there!</h1>
     <h2>The local count is: <%= localCount%></h2>
     <h2>The instance count is: <%= instanceCount %></h2>
 
-    <%@include file="partials/national-parks.jsp"%>
+    <%@include file="../partials/national-parks.jsp"%>
 </body>
 </html>

@@ -33,11 +33,11 @@ if (request.getMethod().equalsIgnoreCase("post")){
 
 <html>
 <head>
-    <%@include file="partials/script.jsp"%>
+    <%@include file="../partials/script.jsp"%>
     <title>Login form</title>
 </head>
 <body>
-<%@include file="partials/navbar.jsp"%>
+<%@include file="../partials/navbar.jsp"%>
 <form action="/login.jsp" method="post">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>

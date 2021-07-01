@@ -13,5 +13,12 @@
 <body>
     <h1>Hello, ${name}!</h1>
 
+    <form action="hello" method="post">
+        <label for="name">Enter name:</label>
+        <input type="text" name="name" id="name">
+        <input type="submit">
+    </form>
+
+
 </body>
 </html>
