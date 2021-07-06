@@ -30,7 +30,7 @@ public class BeanTest {
 
         for (Quote quote: quotes) {
             System.out.println("Author: " + quote.getAuthor().getFirst_name() + " " + quote.getAuthor().getLast_name()
-                    + " Content: " + quote.getContent());
+                    + " | Content: " + quote.getContent());
         }
 
     }
