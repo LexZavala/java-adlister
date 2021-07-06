@@ -1,10 +1,11 @@
 import java.io.Serializable;
+import java.util.Date;
 
 public class Album implements Serializable {
     private long id;
     private String artist;
     private String record_name;
-    private int release_date;
+    private Date release_date;
     private float sales;
     private String genre;
 
@@ -12,7 +13,7 @@ public class Album implements Serializable {
 
     }
 
-    public Album(long id, String artist, String record_name, int release_date, float sales, String genre) {
+    public Album(long id, String artist, String record_name, Date release_date, float sales, String genre) {
         this.id = id;
         this.artist = artist;
         this.record_name = record_name;
@@ -21,7 +22,7 @@ public class Album implements Serializable {
         this.genre = genre;
     }
 
-    public Album(String artist, String record_name, int release_date, float sales, String genre) {
+    public Album(String artist, String record_name, Date release_date, float sales, String genre) {
         this.artist = artist;
         this.record_name = record_name;
         this.release_date = release_date;
@@ -53,11 +54,11 @@ public class Album implements Serializable {
         this.record_name = record_name;
     }
 
-    public int getRelease_date() {
+    public Date getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(int release_date) {
+    public void setRelease_date(Date release_date) {
         this.release_date = release_date;
     }
 
