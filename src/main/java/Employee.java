@@ -1,39 +1,81 @@
-public class Employee {
-    private String name;
-    private char gender;
-    private int heightinCM;
+import java.io.Serializable;
+import java.util.Date;
 
+public class Employee implements Serializable {
+    private long empNo;
+    private String firstName;
+    private String lastName;
+    private char gender;
+    private Date birthDate;
+    private Date hireDate;
+
+//  Empty constructor is there for the serializable nature of how there are multiple employees created
     public Employee(){
 
     }
 
-    public Employee(String name, char gender, int heightinCM) {
-        this.name = name;
+    public Employee(long empNo, String firstName, String lastName, char gender, Date birthDate, Date hireDate) {
+        this.empNo = empNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
-        this.heightinCM = heightinCM;
+        this.birthDate = birthDate;
+        this.hireDate = hireDate;
     }
 
-    public String getName() {
-        return name;
+    public Employee(String firstName, String lastName, char gender, Date birthDate, Date hireDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.hireDate = hireDate;
+    }
+
+    public long getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(long empNo) {
+        this.empNo = empNo;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public char getGender() {
         return gender;
     }
 
-    public int getHeightinCM() {
-        return heightinCM;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setGender(char gender) {
         this.gender = gender;
     }
 
-    public void setHeightinCM(int heightinCM) {
-        this.heightinCM = heightinCM;
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
     }
 }
