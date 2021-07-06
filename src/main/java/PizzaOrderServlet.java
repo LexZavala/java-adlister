@@ -28,7 +28,5 @@ public class PizzaOrderServlet extends HttpServlet {
 
         response.sendRedirect("/pizza-order.jsp");
 
-
-
     }
 }
