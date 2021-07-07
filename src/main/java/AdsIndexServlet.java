@@ -13,3 +13,4 @@ public class AdsIndexServlet extends HttpServlet {
         request.getRequestDispatcher("/ads/index.jsp").forward(request, response);
     }
 }
+
