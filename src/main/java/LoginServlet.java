@@ -10,11 +10,11 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("isAdmin") != null) {
-            response.sendRedirect("/secret-admin-page.jsp");
+            response.sendRedirect("/WEB-INF/secret-admin-page.jsp");
             return;
         }
 
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 //        //to remove an attribute
 //        session.removeAttribute("darkMode");
 //
-//        // destroys the session
+//        // destroys the session - this typically occurs when you log out
 //        session.invalidate();
     }
 }
