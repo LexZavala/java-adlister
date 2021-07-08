@@ -14,7 +14,7 @@
     <jsp:include page="../partials/navbar.jsp" />
 
     <div class="container">
-        <h1>${sessionScope.username}Viewing your profile.</h1>
+        <h1> Welcome ${sessionScope.user} you are now viewing your profile.</h1>
     </div>
     <div>
         <form action="/logout" method="post">

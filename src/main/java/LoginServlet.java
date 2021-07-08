@@ -21,10 +21,12 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         boolean isAdmin = username.equals("admin") && password.equals("password");
-        boolean isUser =  username.equals("lex") && password.equals("password");
+        boolean isUser =  username.equals("Lex") && password.equals("password");
 
         HttpSession session = request.getSession();
 
@@ -32,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("isAdmin", true);
             response.sendRedirect("/secret-admin-page");
         } else if (isUser) {
-            session.setAttribute("user", true);
+            session.setAttribute("user", username);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
