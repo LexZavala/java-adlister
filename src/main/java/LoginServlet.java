@@ -15,8 +15,9 @@ public class LoginServlet extends HttpServlet {
         } else if (request.getSession().getAttribute("user") != null){
             response.sendRedirect("/profile");
             return;
-        }
+        } else {
             request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
