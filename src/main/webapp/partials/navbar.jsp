@@ -1,3 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    HttpSession session2 = request.getSession();
+%>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -7,6 +13,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/login">Login</a></li>
         </ul>
+
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
