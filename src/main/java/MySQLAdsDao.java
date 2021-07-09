@@ -17,36 +17,52 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+//  REFACTORED TO USE METHODS AND SEPARATE OUT THE LOGIC
+
+    private Ad extractAd (ResultSet rs) throws SQLException{
+        return new Ad (
+                rs.getInt("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
+        );
+    }
+
+    private String createInsertQuery(Ad ad){
+        String insertQuery = String.format("insert into ads (user_id, title, description) values (%d, '%s', '%s')",
+                ad.getUserId(), ad.getTitle(), ad.getDescription());
+        return insertQuery;
+    }
+
+    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()) {
+            ads.add(extractAd(rs));
+        }
+        return ads;
+    }
+///////////////////////////////////////////////////////////////////////////
+
 
     @Override
     public List<Ad> all() {
-        List<Ad> allAds = new ArrayList<>();
 
         try {
             Statement stmt = connection.createStatement();
             String selectQuery = "SELECT * FROM ads";
             ResultSet rs = stmt.executeQuery(selectQuery);
-            while (rs.next()) {
-                allAds.add(new Ad(
-                       rs.getInt("user_id"),
-                       rs.getString("title"),
-                       rs.getString("description")
-                ));
-            }
+            return createAdsFromResults(rs);
 
         } catch (SQLException se) {
             se.printStackTrace();
         }
-        return allAds;
+        return null;
     }
 
     @Override
     public Long insert(Ad ad) {
         try {
             Statement stmt = connection.createStatement();
-            String insertQuery = String.format("insert into ads (user_id, title, description) values (%d, '%s', '%s')",
-            ad.getUserId(), ad.getTitle(), ad.getDescription());
-            stmt.executeUpdate(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
             return rs.getLong(1);
