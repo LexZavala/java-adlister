@@ -9,8 +9,12 @@ public class MySQLAdsDao implements Ads {
     private Connection connection;
 
     public MySQLAdsDao() throws SQLException {
-        DriverManager.registerDriver(new Driver());
-        connection = DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPassword());
+        try{
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(config.getUrl(), config.getUser(), config.getPassword());
+        } catch (SQLException error) {
+            throw new RuntimeException("Error connecting to the database");
+        }
     }
 
 
@@ -38,7 +42,6 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
-
         try {
             Statement stmt = connection.createStatement();
             String insertQuery = String.format("insert into ads (user_id, title, description) values (%d, '%s', '%s')",
