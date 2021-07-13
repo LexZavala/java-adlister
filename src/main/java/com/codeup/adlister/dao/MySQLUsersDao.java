@@ -36,16 +36,16 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username LIKE ?;";
-        String searchTermWithWildcards ="%" + username + "%";
+        String sql = "SELECT * FROM users WHERE username = ?;";
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, searchTermWithWildcards);
+            stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
+            rs.next();
             return extractUsers(rs);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all ads.", e);
+            throw new RuntimeException("Error retrieving all users.", e);
         }
     }
 

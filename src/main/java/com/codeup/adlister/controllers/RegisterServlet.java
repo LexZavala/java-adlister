@@ -15,7 +15,7 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // TODO: show the registration form
-        if (request.getSession().getAttribute("newUser") != null) {
+        if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/login");
             return;
         }
@@ -30,13 +30,14 @@ public class RegisterServlet extends HttpServlet {
         String email =  request.getParameter("email");
         String password = request.getParameter("password");
 
-        if (username == null || email == null || password == null){
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty()){
             response.sendRedirect("/register");
             return;
         } else {
             User newUser = new User(username, email, password);
-            request.getSession().setAttribute("user", username);
             DaoFactory.getUserDao().insert(newUser);
+            newUser = DaoFactory.getUserDao().findByUsername(newUser.getUsername());
+            request.getSession().setAttribute("user", newUser);
             response.sendRedirect("/profile");
         }
 
